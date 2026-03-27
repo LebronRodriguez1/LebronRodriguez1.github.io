@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lebron James DG. Rodriguez — Portfolio</title>
+<meta name="description" content="Shopify Virtual Assistant & E-Commerce Specialist. Custom Shopify theme development, CRO, and digital operations.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #2979ff;
+    --blue-bright: #5c9eff;
+    --blue-dim: #1a4faa;
+    --blue-glow: rgba(41,121,255,0.18);
+    --blue-glow-strong: rgba(41,121,255,0.35);
+    --bg: #080c14;
+    --bg2: #0d1220;
+    --bg3: #111827;
+    --glass: rgba(13,18,32,0.7);
+    --glass2: rgba(41,121,255,0.06);
+    --border: rgba(41,121,255,0.2);
+    --border-bright: rgba(41,121,255,0.5);
+    --text: #f0f4ff;
+    --text-dim: #9baac8;
+    --text-muted: #6070a0;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    overflow-x: hidden;
+  }
+
+
+
+  /* Grid overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(41,121,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(41,121,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Noise texture */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(8,12,20,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--blue);
+    letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex; gap: 36px; list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-dim);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute; bottom: -4px; left: 0; right: 0;
+    height: 1px; background: var(--blue);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.25s;
+  }
+  .nav-links a:hover { color: var(--blue); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  /* ── HERO ── */
+  #hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 120px 60px 80px;
+    overflow: hidden;
+  }
+
+  .hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+  }
+  .orb-1 {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(41,121,255,0.15) 0%, transparent 70%);
+    top: -100px; left: -100px;
+    animation: orbFloat 8s ease-in-out infinite;
+  }
+  .orb-2 {
+    width: 350px; height: 350px;
+    background: radial-gradient(circle, rgba(41,121,255,0.1) 0%, transparent 70%);
+    bottom: 0; right: 100px;
+    animation: orbFloat 11s ease-in-out infinite reverse;
+  }
+
+  @keyframes orbFloat {
+    0%, 100% { transform: translate(0, 0); }
+    33% { transform: translate(30px, -20px); }
+    66% { transform: translate(-20px, 30px); }
+  }
+
+  .hero-content {
+    position: relative; z-index: 1;
+    max-width: 800px;
+  }
+
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--blue);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    background: var(--glass2);
+  }
+  .hero-tag .dot {
+    width: 6px; height: 6px;
+    background: var(--blue);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+  }
+
+  .hero-name {
+    font-family: var(--sans);
+    font-size: clamp(42px, 7vw, 82px);
+    font-weight: 800;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #ffffff 0%, var(--blue-bright) 60%, var(--blue) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-typed-wrap {
+    font-family: var(--mono);
+    font-size: clamp(16px, 2.5vw, 22px);
+    color: var(--text-dim);
+    margin-bottom: 32px;
+    min-height: 32px;
+  }
+  .typed-text { color: var(--blue-bright); }
+  .cursor-blink {
+    display: inline-block;
+    width: 2px; height: 1.1em;
+    background: var(--blue);
+    margin-left: 3px;
+    vertical-align: text-bottom;
+    animation: blink 0.9s step-end infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  .hero-desc {
+    font-size: 17px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    max-width: 560px;
+    margin-bottom: 48px;
+  }
+
+  .hero-ctas {
+    display: flex; gap: 16px; flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 32px;
+    background: var(--blue);
+    color: #fff;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+    transition: background 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.1));
+  }
+  .btn-primary:hover { background: var(--blue-bright); transform: translateY(-2px); }
+
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 32px;
+    background: transparent;
+    color: var(--blue);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--border-bright);
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+  }
+  .btn-ghost:hover {
+    background: var(--blue-glow);
+    color: var(--blue-bright);
+    transform: translateY(-2px);
+  }
+
+  .hero-stats {
+    position: absolute; right: 60px; top: 50%;
+    transform: translateY(-50%);
+    display: flex; flex-direction: column; gap: 24px;
+  }
+  .stat-card {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(20px);
+    padding: 20px 24px;
+    min-width: 160px;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--blue), transparent);
+  }
+  .stat-num {
+    font-family: var(--mono);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--blue-bright);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ── SECTIONS ── */
+  section { position: relative; z-index: 1; }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 100px 60px;
+  }
+
+  .section-label {
+    display: flex; align-items: center; gap: 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--blue);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1; height: 1px;
+    background: linear-gradient(90deg, var(--border-bright), transparent);
+  }
+
+  .section-title {
+    font-family: var(--sans);
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 48px;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--bg2); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .about-text p {
+    font-size: 16px; font-family: var(--sans);
+    color: var(--text-dim);
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+  .about-text p span { color: var(--blue-bright); font-weight: 600; }
+
+  .about-highlights {
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .highlight-item {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding: 20px;
+    background: var(--glass);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .highlight-item:hover { border-color: var(--border-bright); }
+  .highlight-item::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: var(--blue);
+  }
+  .hi-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .hi-title {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--blue-bright);
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+  .hi-text {
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+
+  /* ── PROJECTS ── */
+  #projects { background: var(--bg); }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .project-card {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(20px);
+    padding: 36px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+    text-decoration: none;
+    display: block;
+  }
+  .project-card:hover {
+    border-color: var(--border-bright);
+    transform: translateY(-4px);
+  }
+  .project-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--blue-dim), var(--blue-bright), var(--blue-dim));
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .project-card:hover::before { opacity: 1; }
+
+  .project-card.featured {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .project-badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--blue);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border: 1px solid var(--border);
+    margin-bottom: 16px;
+  }
+
+  .project-title {
+    font-family: var(--sans);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .project-desc {
+    font-size: 15px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .project-tags {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-bottom: 24px;
+  }
+  .tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--blue-bright);
+    padding: 4px 10px;
+    background: var(--blue-glow);
+    border: 1px solid var(--border);
+    letter-spacing: 0.05em;
+  }
+
+  .project-metrics {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  }
+  .metric {
+    text-align: center;
+    padding: 16px;
+    background: rgba(41,121,255,0.05);
+    border: 1px solid var(--border);
+  }
+  .metric-num {
+    font-family: var(--mono);
+    font-size: 22px;
+    color: var(--blue-bright);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .metric-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .project-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--blue);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s, gap 0.2s;
+  }
+  .project-link:hover { color: var(--blue-bright); gap: 12px; }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--bg2); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .skill-group h3 {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--blue);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .skill-bar-item {
+    margin-bottom: 16px;
+  }
+  .skill-bar-header {
+    display: flex; justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }
+  .skill-bar-track {
+    height: 3px;
+    background: rgba(41,121,255,0.1);
+    position: relative;
+    overflow: hidden;
+  }
+  .skill-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--blue-dim), var(--blue-bright));
+    width: 0;
+    transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+  }
+  .skill-bar-fill::after {
+    content: '';
+    position: absolute; right: 0; top: 50%;
+    transform: translateY(-50%);
+    width: 6px; height: 6px;
+    background: var(--blue-bright);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--blue);
+  }
+
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--bg); }
+
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 8px; bottom: 8px;
+    width: 1px;
+    background: linear-gradient(180deg, var(--blue), transparent);
+  }
+
+  .timeline-item {
+    position: relative;
+    padding-bottom: 48px;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute; left: -36px; top: 8px;
+    width: 8px; height: 8px;
+    background: var(--blue);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--blue);
+  }
+
+  .tl-header {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    flex-wrap: wrap; gap: 8px;
+    margin-bottom: 6px;
+  }
+  .tl-title {
+    font-family: var(--sans);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .tl-date {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--blue);
+    padding: 4px 10px;
+    border: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  .tl-company {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-bottom: 16px;
+  }
+  .tl-bullets {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .tl-bullets li {
+    font-size: 15px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    padding-left: 16px;
+    position: relative;
+  }
+  .tl-bullets li::before {
+    content: '›';
+    position: absolute; left: 0;
+    color: var(--blue);
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--bg2); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .contact-info h3 {
+    font-family: var(--sans);
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .contact-info p {
+    font-size: 15px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+
+  .contact-links {
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .contact-link {
+    display: flex; align-items: center; gap: 14px;
+    padding: 16px 20px;
+    background: var(--glass);
+    border: 1px solid var(--border);
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .contact-link:hover {
+    border-color: var(--border-bright);
+    background: var(--blue-glow);
+  }
+  .cl-icon { font-size: 18px; }
+  .cl-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .cl-value {
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* Contact form */
+  .contact-form {
+    display: flex; flex-direction: column; gap: 16px;
+  }
+
+  .form-group {
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .form-group label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--blue);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .form-group input,
+  .form-group textarea {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 13px;
+    padding: 12px 16px;
+    outline: none;
+    transition: border-color 0.2s;
+    resize: none;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: var(--border-bright);
+    background: var(--blue-glow);
+  }
+  .form-group textarea { height: 120px; }
+
+  .form-submit {
+    padding: 14px 32px;
+    background: var(--blue);
+    color: #fff;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: none;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+    transition: background 0.2s;
+    align-self: flex-start;
+  }
+  .form-submit:hover { background: var(--blue-bright); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 32px 60px;
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    position: relative; z-index: 1;
+  }
+  footer p {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+  footer span { color: var(--blue); }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { gap: 20px; }
+    #hero { padding: 100px 24px 60px; }
+    .hero-stats { display: none; }
+    .section-inner { padding: 70px 24px; }
+    .about-grid, .projects-grid, .contact-grid { grid-template-columns: 1fr; }
+    .project-card.featured { grid-column: auto; grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    footer { flex-direction: column; gap: 8px; text-align: center; }
+  }
+
+  .ss-card {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    padding: 12px;
+    backdrop-filter: blur(10px);
+    transition: border-color 0.3s;
+  }
+  .ss-card:hover { border-color: var(--border-bright); }
+  .ss-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">LJR.</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-orb orb-1"></div>
+  <div class="hero-orb orb-2"></div>
+
+  <div class="hero-content">
+    <div class="hero-tag">
+      <span class="dot"></span>
+      Open to remote work — Shopify VA &amp; E-Commerce
+    </div>
+
+    <h1 class="hero-name">Lebron James<br>DG. Rodriguez</h1>
+
+    <div class="hero-typed-wrap">
+      <span class="typed-text" id="typed"></span><span class="cursor-blink"></span>
+    </div>
+
+    <p class="hero-desc">
+      I build Shopify stores that convert. Custom themes, 12 CRO features, 95 Lighthouse score.
+      If your store looks good but isn't performing, that's the problem I solve.
+    </p>
+
+    <div class="hero-ctas">
+      <a href="#projects" class="btn-primary">View My Work →</a>
+      <a href="#contact" class="btn-ghost">Get In Touch</a>
+      <a href="https://drive.google.com/file/d/1F5se6pYJzL_vYGXOL1rVNKp8rM3fcjqa/view?usp=sharing" target="_blank" class="btn-ghost">Download Resume ↓</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-card">
+      <div class="stat-num">95</div>
+      <div class="stat-label">Lighthouse Score</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">12</div>
+      <div class="stat-label">CRO Features Built</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">100</div>
+      <div class="stat-label">SEO Score</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">500+</div>
+      <div class="stat-label">Live Viewers/Session</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label">01 — About</div>
+    <h2 class="section-title">Who I Am</h2>
+
+    <div class="about-grid">
+      <div class="about-text fade-up">
+        <p>
+          I'm a <span>BS Computer Science student</span> at Far Eastern University,
+          specializing in Software Engineering. I don't just manage Shopify stores.
+          I build them from zero, write every line of Liquid, and make them fast.
+        </p>
+        <p>
+          The LuxeWear theme is proof. <span>18 sections, 8 snippets, 12 CRO features</span>,
+          95 Performance, 100 SEO, zero third-party JS. Built in weeks. No starter theme,
+          no shortcuts, no excuses.
+        </p>
+        <p>
+          On the operations side, I ranked <span>Top 5 Live Selling Host</span> at Unicharm Philippines,
+          growing broadcast audiences to 500+ viewers per session and lifting sales by 30%.
+          I know e-commerce from both the code and the conversion side.
+        </p>
+      </div>
+
+      <div class="about-highlights fade-up">
+        <div class="highlight-item">
+          <div class="hi-icon">🎓</div>
+          <div>
+            <div class="hi-title">Education</div>
+            <div class="hi-text">BS Computer Science — Far Eastern University<br>Specialization: Software Engineering, 2023–2026</div>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="hi-icon">📍</div>
+          <div>
+            <div class="hi-title">Location</div>
+            <div class="hi-text">Meycauayan, Bulacan, Philippines<br>Open to remote opportunities worldwide</div>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="hi-icon">🏆</div>
+          <div>
+            <div class="hi-title">Achievements</div>
+            <div class="hi-text">Top 5 Live Selling Host · Academic Excellence Awardee · Top 10 Sales Performer VXI Global Solutions</div>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="hi-icon">⚡</div>
+          <div>
+            <div class="hi-title">Core Strengths</div>
+            <div class="hi-text">Shopify Theme Dev · CRO · E-Commerce Ops · Virtual Assistance · Live Selling</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-label">02 — Projects</div>
+    <h2 class="section-title">Selected Work</h2>
+
+    <div class="projects-grid">
+      <!-- Featured: LuxeWear -->
+      <div class="project-card featured fade-up">
+        <div>
+          <div class="project-badge">Featured Project</div>
+          <h3 class="project-title">LuxeWear — Custom Shopify Theme</h3>
+          <p class="project-desc">
+            A luxury Shopify theme built entirely from scratch. Custom Liquid, bespoke design system,
+            18 sections, 8 snippets, and 12 CRO features in vanilla JS with zero dependencies.
+            It scores 95 on Performance and 100 on SEO. That's not a template. That's craft.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Liquid</span>
+            <span class="tag">HTML/CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Shopify</span>
+            <span class="tag">CRO</span>
+            <span class="tag">Performance</span>
+          </div>
+          <a href="LuxewearPortfolio.html" target="_blank" class="project-link">
+            View Case Study →
+          </a>
+        </div>
+        <div class="project-metrics">
+          <div class="metric">
+            <div class="metric-num">95</div>
+            <div class="metric-label">Performance</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num">100</div>
+            <div class="metric-label">SEO</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num">93</div>
+            <div class="metric-label">Accessibility</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num">12</div>
+            <div class="metric-label">CRO Features</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num">0.6s</div>
+            <div class="metric-label">FCP</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num">1.2s</div>
+            <div class="metric-label">LCP</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Jeepney IS -->
+      <div class="project-card fade-up">
+        <div class="project-badge">Capstone Project</div>
+        <h3 class="project-title">Jeepney Information System</h3>
+        <p class="project-desc">
+          A full-stack transport management system built for my university capstone. Covers route tracking,
+          fare computation, and operator records. Applied end-to-end software engineering from system
+          analysis through database design, UI/UX, and technical documentation.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Full-Stack</span>
+          <span class="tag">Database Design</span>
+          <span class="tag">UI/UX</span>
+          <span class="tag">Software Engineering</span>
+        </div>
+        <a href="https://github.com/LebronRodriguez1" target="_blank" class="project-link">
+          View on GitHub →
+        </a>
+      </div>
+
+      <!-- Social Media -->
+      <div class="project-card fade-up">
+        <div class="project-badge">VA Project</div>
+        <h3 class="project-title">Live Selling Operations</h3>
+        <p class="project-desc">
+          Ranked Top 5 Live Selling Host at Unicharm Philippines. Grew broadcast audiences to
+          500+ consistent viewers per session and contributed to a 30% lift in live sales.
+          Real e-commerce operations. Real numbers.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Social Commerce</span>
+          <span class="tag">Content Strategy</span>
+          <span class="tag">Sales</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-label">03 — Skills</div>
+    <h2 class="section-title">Expertise</h2>
+
+    <div class="skills-grid fade-up">
+      <div class="skill-group">
+        <h3>Development</h3>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span>Shopify / Liquid</span><span>90%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="90"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span>HTML / CSS</span><span>88%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="88"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span>JavaScript</span><span>80%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="80"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span>Performance Optimization</span><span>85%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="85"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span>CRO</span><span>87%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="87"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>E-Commerce & VA</h3>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span>Shopify Store Management</span><span>92%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="92"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span>Live Selling</span><span>95%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="95"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span>Customer Service</span><span>93%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="93"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span>Social Media Management</span><span>85%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="85"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span>CRM Software</span><span>82%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="82"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Tools & Platforms</h3>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span>Google Workspace</span><span>90%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="90"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span>Microsoft Office</span><span>88%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="88"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span>GitHub / VS Code</span><span>80%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="80"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span>Project Management Tools</span><span>85%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="85"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span>ChatGPT / AI Tools</span><span>88%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="88"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-label">04 — Experience</div>
+    <h2 class="section-title">Work History</h2>
+
+    <div class="timeline fade-up">
+      <div class="timeline-item">
+        <div class="tl-header">
+          <div class="tl-title">Live Selling Host</div>
+          <div class="tl-date">Sept 2025 – Present</div>
+        </div>
+        <div class="tl-company">Unicharm Philippines · Full-Time</div>
+        <ul class="tl-bullets">
+          <li>Grew live broadcast audience to 500+ consistent viewers per session on social commerce platforms.</li>
+          <li>Built product scripts and presentations that contributed to a 30% increase in live session sales.</li>
+          <li>Coordinated with marketing and inventory teams to keep product availability and campaigns in sync.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-header">
+          <div class="tl-title">Live Selling Operator</div>
+          <div class="tl-date">Jul 2025 – Sept 2025</div>
+        </div>
+        <div class="tl-company">Unicharm Philippines · Full-Time</div>
+        <ul class="tl-bullets">
+          <li>Ran technical operations for 10+ live broadcasts per week, handling setup, stream quality, and real-time troubleshooting.</li>
+          <li>Created product listings and bundle packages with accurate descriptions and pricing for every session.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-header">
+          <div class="tl-title">Sales / Telemarketing Representative</div>
+          <div class="tl-date">Dec 2024 – Jun 2025</div>
+        </div>
+        <div class="tl-company">VXI Global Solutions · Full-Time</div>
+        <ul class="tl-bullets">
+          <li>Exceeded monthly quota by 120% and ranked Top 10 Sales Performers at VXI Global Solutions for Q4 2025.</li>
+          <li>Managed full CRM pipeline and built client relationships through consultative selling that generated repeat business.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-header">
+          <div class="tl-title">Chat / Email Support Agent</div>
+          <div class="tl-date">Oct 2024 – Nov 2024</div>
+        </div>
+        <div class="tl-company">VXI Global Solutions · Full-Time</div>
+        <ul class="tl-bullets">
+          <li>Resolved 80 to 100 support tickets daily and held a 93.88% CSAT score throughout the entire tenure.</li>
+          <li>Prioritized first-contact resolution on every escalation. No ticket left hanging.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">05 — Contact</div>
+    <h2 class="section-title">Get In Touch</h2>
+
+    <div class="contact-grid">
+      <div class="contact-info fade-up">
+        <h3>Ready to<br>hire someone?</h3>
+        <p>
+          If you need a Shopify VA who can build themes, manage your store, and actually move the needle
+          on conversions, let's talk. I'm open to freelance, part-time, and full-time remote work.
+        </p>
+        <div class="contact-links">
+          <a href="mailto:lebjames.rodriguez@gmail.com" class="contact-link">
+            <span class="cl-icon">✉️</span>
+            <div>
+              <div class="cl-label">Email</div>
+              <div class="cl-value">lebjames.rodriguez@gmail.com</div>
+            </div>
+          </a>
+          <a href="https://linkedin.com/in/lebronrodriguez" target="_blank" class="contact-link">
+            <span class="cl-icon">💼</span>
+            <div>
+              <div class="cl-label">LinkedIn</div>
+              <div class="cl-value">linkedin.com/in/lebronrodriguez</div>
+            </div>
+          </a>
+          <a href="https://github.com/LebronRodriguez1" target="_blank" class="contact-link">
+            <span class="cl-icon">⌥</span>
+            <div>
+              <div class="cl-label">GitHub</div>
+              <div class="cl-value">github.com/LebronRodriguez1</div>
+            </div>
+          </a>
+          <a href="https://drive.google.com/drive/folders/1Q0CgCusuEoFSN1PU_O4gu29TLiEeg8dd" target="_blank" class="contact-link">
+            <span class="cl-icon">📁</span>
+            <div>
+              <div class="cl-label">Portfolio Drive</div>
+              <div class="cl-value">View LuxeWear Case Study</div>
+            </div>
+          </a>
+          <a href="tel:+639062347048" class="contact-link">
+            <span class="cl-icon">📱</span>
+            <div>
+              <div class="cl-label">Phone / WhatsApp</div>
+              <div class="cl-value">+63 906 234 7048</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <form class="contact-form fade-up" action="https://formspree.io/f/lebjames.rodriguez@gmail.com" method="POST" onsubmit="handleSubmit(event)">
+        <input type="hidden" name="_replyto" value="lebjames.rodriguez@gmail.com">
+        <input type="hidden" name="_subject" value="New Portfolio Inquiry — LebronRodriguez.dev">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="Juan dela Cruz" required>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="juan@example.com" required>
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <input type="text" placeholder="Shopify VA Role / Project Inquiry">
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Tell me about your project or opportunity..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Message →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <span>Lebron James DG. Rodriguez</span>. All rights reserved.</p>
+  <p>Built with <span>HTML · CSS · JS</span> — <a href="https://lebronrodriguez1.github.io/portfolio" target="_blank" style="color:var(--blue);text-decoration:none;">lebronrodriguez1.github.io/portfolio</a></p>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Typed animation
+  const phrases = [
+    'Shopify Virtual Assistant',
+    'E-Commerce Specialist',
+    'Custom Theme Developer',
+    'CRO Optimizer',
+    'Live Selling Expert'
+  ];
+  let pi = 0, ci = 0, deleting = false;
+  const typedEl = document.getElementById('typed');
+
+  function type() {
+    const phrase = phrases[pi];
+    if (!deleting) {
+      typedEl.textContent = phrase.slice(0, ++ci);
+      if (ci === phrase.length) { deleting = true; setTimeout(type, 1800); return; }
+    } else {
+      typedEl.textContent = phrase.slice(0, --ci);
+      if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; }
+    }
+    setTimeout(type, deleting ? 40 : 80);
+  }
+  type();
+
+  // Scroll animations
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        // Skill bars
+        e.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
+          bar.style.width = bar.dataset.w + '%';
+        });
+      }
+    });
+  }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Immediately show elements already in viewport
+  setTimeout(() => {
+    document.querySelectorAll('.fade-up').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight) {
+        el.classList.add('visible');
+        el.querySelectorAll('.skill-bar-fill').forEach(bar => {
+          bar.style.width = bar.dataset.w + '%';
+        });
+      }
+    });
+  }, 50);
+
+  // Also observe skills
+}); // end DOMContentLoaded
+</script>
+</body>
+</html>
